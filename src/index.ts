@@ -253,16 +253,16 @@ class CreatorTokenScript {
     }
   }
 
-  async run(tokenName: string, tokenSymbol: string): Promise<void> {
+  async run(): Promise<void> {
     try {
       console.log(`\n🚀 Starting creator token creation process...`);
-      console.log(`📛 Token Name: ${tokenName}`);
-      console.log(`🏷️  Token Symbol: ${tokenSymbol}`);
+      console.log(`📛 Token Name: ${config.TOKEN_NAME}`);
+      console.log(`🏷️  Token Symbol: ${config.TOKEN_SYMBOL}`);
       console.log(`💰 Total Supply: ${config.TOKEN_SUPPLY.toLocaleString()} tokens`);
       console.log(`🏊 Pool: ${config.POOL_CREATOR_TOKENS.toLocaleString()} tokens + ${config.POOL_SOL_AMOUNT} SOL\n`);
 
       // Step 1: Create the token
-      const mint = await this.createSplToken(tokenName, tokenSymbol);
+      const mint = await this.createSplToken(config.TOKEN_NAME, config.TOKEN_SYMBOL);
       
       // Step 2: Mint 1 billion tokens
       const totalSupplyWithDecimals = config.TOKEN_SUPPLY * Math.pow(10, config.MOXIE_DECIMALS);
@@ -288,31 +288,8 @@ async function main() {
     console.log("🌟 Moxie Creator Token & Pool Creation Script");
     console.log("=" .repeat(50));
     
-    const args = process.argv.slice(2);
-    
-    if (args.length < 2) {
-      console.error("❌ Usage: npm run create-token <tokenName> <tokenSymbol>");
-      console.error("📝 Example: npm run create-token \"My Creator\" \"MYCR\"");
-      console.error("\n📖 Alternative usage:");
-      console.error("   npm run dev \"My Creator\" \"MYCR\"");
-      console.error("   ts-node src/index.ts \"My Creator\" \"MYCR\"");
-      process.exit(1);
-    }
-
-    const [tokenName, tokenSymbol] = args;
-    
-    if (!tokenName || !tokenSymbol) {
-      console.error("❌ Both token name and symbol are required");
-      process.exit(1);
-    }
-
-    if (tokenSymbol.length > 10) {
-      console.error("❌ Token symbol must be 10 characters or less");
-      process.exit(1);
-    }
-
     const script = new CreatorTokenScript();
-    await script.run(tokenName, tokenSymbol);
+    await script.run();
     
   } catch (error) {
     console.error("❌ Unhandled error:", error);

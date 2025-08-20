@@ -15,6 +15,10 @@ export interface Config {
   TOKEN_SUPPLY: number;
   POOL_CREATOR_TOKENS: number;
   POOL_SOL_AMOUNT: number;
+  
+  // Hardcoded token details
+  TOKEN_NAME: string;
+  TOKEN_SYMBOL: string;
 }
 
 class ConfigService {
@@ -27,6 +31,10 @@ class ConfigService {
   public readonly TOKEN_SUPPLY: number = 1_000_000_000; // 1 billion tokens
   public readonly POOL_CREATOR_TOKENS: number = 125_000_000; // 125 million tokens for pool
   public readonly POOL_SOL_AMOUNT: number = 69; // 69 SOL for pool
+  
+  // Hardcoded token details - UPDATE THESE VALUES
+  public readonly TOKEN_NAME: string = "Moxie's TORY"; // Replace with your desired token name
+  public readonly TOKEN_SYMBOL: string = "TORY"; // Replace with your desired token symbol (max 10 chars)
 
   constructor() {
     // Solana configuration
