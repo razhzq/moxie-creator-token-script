@@ -1,0 +1,39 @@
+{
+  "name": "moxie-creator-token-script",
+  "version": "1.0.0",
+  "description": "Standalone script to create Moxie creator tokens with Meteora liquidity pools",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts",
+    "create-token": "ts-node src/index.ts",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "solana",
+    "spl-token",
+    "meteora",
+    "defi",
+    "liquidity-pool",
+    "moxie"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@coral-xyz/anchor": "^0.31.1",
+    "@metaplex-foundation/mpl-token-metadata": "^2.13.0",
+    "@meteora-ag/cp-amm-sdk": "^1.0.11-rc.0",
+    "@solana/spl-token": "^0.4.8",
+    "@solana/web3.js": "^1.95.4",
+    "dotenv": "^16.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+} 
